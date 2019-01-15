@@ -14,4 +14,4 @@ module.exports = {
     // configure global variables avoid no-undef error
     CONFIG: true
   }
-}
+};

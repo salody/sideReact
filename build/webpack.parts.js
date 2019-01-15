@@ -1,13 +1,13 @@
-const webpack = require("webpack");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const PurifyCSSPlugin = require("purifycss-webpack");
+const webpack = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const PurifyCSSPlugin = require('purifycss-webpack')
 
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
-    stats: "errors-only", // Display only errors to reduce the amount of output.
+    stats: 'errors-only', // Display only errors to reduce the amount of output.
     host,
     port,
-    open: true, // Open the page in browser
+    open:  true, // Open the page in browser
 
     // WDS overlay does not capture runtime errors of the application.
     overlay: true, // display error in browser
@@ -25,7 +25,7 @@ exports.devServer = ({ host, port } = {}) => ({
   plugins: [
     new webpack.HotModuleReplacementPlugin() // 配合hot:true打开HMR
   ]
-});
+})
 
 exports.loadCSS = ({ include, exclude } = {}) => ({
   module: {
@@ -38,11 +38,11 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
         // evaluated from right to left.
         // This means that loaders: ["style-loader", "css-loader"]
         // can be read as styleLoader(cssLoader(input)).
-        use: ["style-loader", "css-loader"]
+        use: ['style-loader', 'css-loader']
       }
     ]
   }
-});
+})
 
 exports.loadSCSS = ({ include, exclude } = {}) => ({
   module: {
@@ -51,17 +51,17 @@ exports.loadSCSS = ({ include, exclude } = {}) => ({
         test: /\.scss$/,
         include,
         exclude,
-        use: ["style-loader", "css-loader", "sass-loader"]
+        use:  ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   }
-});
+})
 
 exports.extractCSS = ({ include, exclude, use = [] } = {}) => {
   // Output extracted CSS to a file
   const plugin = new MiniCssExtractPlugin({
-    filename: "styles/[name].css"
-  });
+    filename: 'styles/[name].css'
+  })
 
   return {
     module: {
@@ -76,12 +76,12 @@ exports.extractCSS = ({ include, exclude, use = [] } = {}) => {
       ]
     },
     plugins: [plugin]
-  };
-};
+  }
+}
 
 exports.purifyCSS = ({ paths }) => ({
   plugins: [new PurifyCSSPlugin({ paths })]
-});
+})
 
 exports.loadImages = ({ include, exclude, options } = {}) => ({
   module: {
@@ -90,14 +90,14 @@ exports.loadImages = ({ include, exclude, options } = {}) => ({
         test: /\.(png|jpg)$/,
         include,
         exclude,
-        use: {
-          loader: "url-loader",
+        use:  {
+          loader: 'url-loader',
           options
         }
       }
     ]
   }
-});
+})
 
 exports.loadJavaScript = ({ include, exclude } = {}) => ({
   module: {
@@ -106,21 +106,21 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
         test: /\.js$/,
         include,
         exclude,
-        use: "babel-loader"
+        use:  'babel-loader'
       }
     ]
   }
-});
+})
 
 exports.setFreeVariables = (variables = {}) => {
-  const env = {};
+  const env = {}
   for (let key in variables) {
     if (variables.hasOwnProperty(key)) {
-      env[key] = JSON.stringify(variables[key]);
+      env[key] = JSON.stringify(variables[key])
     }
   }
 
   return {
     plugins: [new webpack.DefinePlugin(env)]
-  };
-};
+  }
+}
