@@ -5,14 +5,14 @@ export default (text = CONFIG.PLATFORM_HOST) => {
   element.innerHTML = text
 
   element.onclick = () => {
-		import('./lazy')
-		  .then(lazy => {
-		    console.log(lazy)
-		    element.textContent = lazy.default
-		  })
-		  .catch(err => {
-		    console.log(err)
-		  })
+    import('./lazy')
+      .then(lazy => {
+        console.log(lazy)
+        element.textContent = lazy.default
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   return element

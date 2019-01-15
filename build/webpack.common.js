@@ -8,7 +8,7 @@ const PATHS = {
 
 const parts = require('./webpack.parts')
 const variables = require('../env')
-
+s
 const commonConfig = merge([
   {
     plugins: [

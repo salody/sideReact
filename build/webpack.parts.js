@@ -13,16 +13,16 @@ exports.devServer = ({ host, port } = {}) => ({
     overlay: true, // display error in browser
 
     // watchOptions: {
-    // 	// Delay the rebuild after the first change
-    // 	aggregateTimeout: 300,
+    // // Delay the rebuild after the first change
+    // aggregateTimeout: 300,
     //
-    // 	// Poll 轮询 using interval (in ms, accepts boolean too)
-    // 	poll: 1000,
+    // // Poll 轮询 using interval (in ms, accepts boolean too)
+    // poll: 1000,
     // },
 
     hot: true // HMR 这个和poll二选一
   },
-  plugins: [
+  plugins:   [
     new webpack.HotModuleReplacementPlugin() // 配合hot:true打开HMR
   ]
 })
@@ -64,7 +64,7 @@ exports.extractCSS = ({ include, exclude, use = [] } = {}) => {
   })
 
   return {
-    module: {
+    module:  {
       rules: [
         {
           test: /\.css$/,
