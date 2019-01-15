@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "npx eslint --cache --fix ./",
+    "lint": "npx eslint --fix ./",
     "beauty": "pretty-quick",
     "dev": "nodemon --watch build --exec \"cross-env NODE_ENV=development webpack-dev-server --config build/webpack.development.js\"",
     "test": "nodemon --watch build --exec \"cross-env NODE_ENV=test webpack-dev-server --config build/webpack.development.js\"",
