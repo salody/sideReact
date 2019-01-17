@@ -13,3 +13,10 @@ console.log('hello world')
 console.log('hello world')
 
 document.body.appendChild(component())
+
+const out = {
+  chunkFilename: '[name].[chunkhash:4].js',
+  filename:      '[name].[chunkhash:4].js'
+}
+
+console.log(out)

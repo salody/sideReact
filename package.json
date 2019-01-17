@@ -23,10 +23,7 @@
       "git add"
     ]
   },
-  "pre-commit": [
-    "beauty",
-    "lint-staged"
-  ],
+  "pre-commit": "lint-staged",
   "keywords": [],
   "author": "",
   "license": "ISC",
