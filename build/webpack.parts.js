@@ -4,6 +4,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const PurifyCSSPlugin = require('purifycss-webpack')
 
 
+sasaknajkonpa
+x,await
 
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
