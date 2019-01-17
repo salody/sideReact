@@ -3,6 +3,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const PurifyCSSPlugin = require('purifycss-webpack')
 
+
+sasa
+saj()
+
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
     stats: 'errors-only', // Display only errors to reduce the amount of output.
