@@ -5,8 +5,6 @@
   "main": "index.js",
   "scripts": {
     "lint-staged": "lint-staged",
-    "lint": "npx eslint --fix ./",
-    "beauty": "pretty-quick",
     "dev": "nodemon --watch build --exec \"cross-env NODE_ENV=development webpack-dev-server --config build/webpack.development.js\"",
     "test": "nodemon --watch build --exec \"cross-env NODE_ENV=test webpack-dev-server --config build/webpack.development.js\"",
     "build-prod": "rimraf ./dist && cross-env NODE_ENV=production webpack --config build/webpack.production.js",
@@ -52,7 +50,6 @@
     "nodemon": "^1.18.9",
     "pre-commit": "^1.2.2",
     "prettier": "^1.15.3",
-    "pretty-quick": "^1.8.0",
     "purify-css": "^1.2.5",
     "purifycss-webpack": "^0.7.0",
     "rimraf": "^2.6.3",
