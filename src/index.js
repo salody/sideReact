@@ -8,5 +8,8 @@ new Vue()
 
 console.log('hello world')
 console.log('hello world')
+console.log('hello world')
+
+console.log('hello world')
 
 document.body.appendChild(component())
