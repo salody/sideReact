@@ -12,9 +12,9 @@ const commonConfig = require('./webpack.common')
 const productionConfig = merge([
   {
     output: {
-      chunkFilename: "[name].[chunkhash:4].js",
-      filename: "[name].[chunkhash:4].js",
-    },
+      chunkFilename: '[name].[chunkhash:4].js',
+      filename:      '[name].[chunkhash:4].js'
+    }
   },
   parts.extractCSS({
     use: 'css-loader'
@@ -45,8 +45,8 @@ const productionConfig = merge([
         }
       },
       runtimeChunk: {
-        name: "manifest",
-      },
+        name: 'manifest'
+      }
     }
   },
 
