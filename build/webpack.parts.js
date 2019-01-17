@@ -3,8 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const PurifyCSSPlugin = require('purifycss-webpack')
 
-allowSamePrecedence
-      sa xa
+
 
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
