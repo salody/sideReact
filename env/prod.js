@@ -1,5 +1,5 @@
 module.exports = {
-  'CONFIG.PLATFORM_HOST':   'https://platformapi.coolcollege.cn',
-  'CONFIG.ENTERPRISE_HOST': 'https://enterpriseapi.coolcollege.cn',
-  'CONFIG.HOST_ISV':        'https://isv.coolcollege.cn'
+  'API.PLATFORM_HOST':   'https://platformapi.coolcollege.cn',
+  'API.ENTERPRISE_HOST': 'https://enterpriseapi.coolcollege.cn',
+  'API.HOST_ISV':        'https://isv.coolcollege.cn'
 }
