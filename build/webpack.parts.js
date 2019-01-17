@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const PurifyCSSPlugin = require('purifycss-webpack')
 
 exports.devServer = ({ host, port } = {}) => ({
@@ -60,7 +61,7 @@ exports.loadSCSS = ({ include, exclude } = {}) => ({
 exports.extractCSS = ({ include, exclude, use = [] } = {}) => {
   // Output extracted CSS to a file
   const plugin = new MiniCssExtractPlugin({
-    filename: 'styles/[name].css'
+    filename: 'styles/[name].[contenthash:4].css'
   })
 
   return {
@@ -124,3 +125,9 @@ exports.setFreeVariables = (variables = {}) => {
     plugins: [new webpack.DefinePlugin(env)]
   }
 }
+
+exports.analyze = () => ({
+  plugins: [
+    new BundleAnalyzerPlugin()
+  ]
+})
