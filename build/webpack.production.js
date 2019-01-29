@@ -14,7 +14,7 @@ const productionConfig = merge([
   },
   parts.injectScriptToHtml({ isProduction: true }),
   parts.extractCSS({
-    use: 'css-loader'
+    use: ['css-loader', parts.autoprefix()]
   }),
 
   // It's essential the purify css plugin is used

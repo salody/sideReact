@@ -1,7 +1,7 @@
 export default (text = API.PLATFORM_HOST) => {
   const element = document.createElement('div')
 
-  element.className = 'pure-button'
+  element.className = 'autoplacement-example pure-button'
   element.innerHTML = text
 
   element.onclick = () => {
