@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "lint-staged": "lint-staged",
-    "dev": "nodemon --watch build --exec \"cross-env NODE_ENV=development webpack-dev-server --config build/webpack.development.js\"",
-    "test": "nodemon --watch build --exec \"cross-env NODE_ENV=test webpack-dev-server --config build/webpack.development.js\"",
-    "build-prod": "rimraf ./dist && cross-env NODE_ENV=production webpack --config build/webpack.production.js",
-    "build-test": "rimraf ./dist && cross-env NODE_ENV=test webpack --config build/webpack.production.js",
-    "build:stats": "rimraf ./dist && cross-env NODE_ENV=production webpack --config build/webpack.production.js --json > stats.json"
+    "dev": "nodemon --watch build --exec \"cross-env NODE_ENV=development webpack-dev-server --mode development --config build/webpack.development.js\"",
+    "test": "nodemon --watch build --exec \"cross-env NODE_ENV=test webpack-dev-server --mode development --config build/webpack.development.js\"",
+    "build-prod": "rimraf ./dist && cross-env NODE_ENV=production webpack --mode production --config build/webpack.production.js",
+    "build-test": "rimraf ./dist && cross-env NODE_ENV=test webpack --mode production --config build/webpack.production.js",
+    "build:stats": "rimraf ./dist && cross-env NODE_ENV=production webpack --mode production --config build/webpack.production.js --json > stats.json"
   },
   "lint-staged": {
     "*.{css,json,md}": [
@@ -29,6 +29,7 @@
     "@babel/core": "^7.2.2",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
     "@types/webpack": "^4.4.23",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
@@ -62,8 +63,5 @@
     "webpack-dev-server": "^3.1.14",
     "webpack-merge": "^4.2.1"
   },
-  "dependencies": {
-    "purecss": "^1.0.0",
-    "vue": "^2.5.22"
-  }
+  "dependencies": {}
 }

@@ -1,4 +1,4 @@
-export default (text = CONFIG.PLATFORM_HOST) => {
+export default (text = API.PLATFORM_HOST) => {
   const element = document.createElement('div')
 
   element.className = 'pure-button'

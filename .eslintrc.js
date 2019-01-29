@@ -12,6 +12,6 @@ module.exports = {
   },
   globals: {
     // configure global variables avoid no-undef error
-    CONFIG: true
+    API: true
   }
 };

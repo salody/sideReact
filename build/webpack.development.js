@@ -7,6 +7,7 @@ const parts = require('./webpack.parts')
 const commonConfig = require('./webpack.common')
 
 const developmentConfig = merge([
+  parts.injectScriptToHtml({ isProduction: false }),
   parts.devServer({
     host: process.env.HOST,
     port: process.env.PORT

@@ -1,7 +1,9 @@
 const webpack = require('webpack')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const PurifyCSSPlugin = require('purifycss-webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const paths = require('./paths')
 
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
@@ -61,7 +63,7 @@ exports.loadSCSS = ({ include, exclude } = {}) => ({
 exports.extractCSS = ({ include, exclude, use = [] } = {}) => {
   // Output extracted CSS to a file
   const plugin = new MiniCssExtractPlugin({
-    filename: 'styles/[name].[contenthash:4].css'
+    filename: 'styles/[name].[contenthash:8].css'
   })
 
   return {
@@ -88,7 +90,7 @@ exports.loadImages = ({ include, exclude, options } = {}) => ({
   module: {
     rules: [
       {
-        test: /\.(png|jpg)$/,
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
         include,
         exclude,
         use:  {
@@ -104,10 +106,23 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         include,
         exclude,
-        use:  'babel-loader'
+        use:  {
+          loader: 'babel-loader?cacheDirectory'
+        }
+      }
+    ]
+  }
+})
+
+exports.loadSvg = () => ({
+  module: {
+    rules: [
+      {
+        test: /\.svg$/,
+        use:  'file-loader'
       }
     ]
   }
@@ -129,5 +144,35 @@ exports.setFreeVariables = (variables = {}) => {
 exports.analyze = () => ({
   plugins: [
     new BundleAnalyzerPlugin()
+  ]
+})
+
+exports.injectScriptToHtml = ({ isProduction } = {}) => ({
+  plugins: [
+    new HtmlWebpackPlugin(
+      Object.assign(
+        {},
+        {
+          inject:   true,
+          template: paths.appHtml
+        },
+        isProduction
+          ? {
+            minify: {
+              removeComments:                true,
+              collapseWhitespace:            true,
+              removeRedundantAttributes:     true,
+              useShortDoctype:               true,
+              removeEmptyAttributes:         true,
+              removeStyleLinkTypeAttributes: true,
+              keepClosingSlash:              true,
+              minifyJS:                      true,
+              minifyCSS:                     true,
+              minifyURLs:                    true
+            }
+          }
+          : undefined
+      )
+    )
   ]
 })
