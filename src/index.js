@@ -1,12 +1,9 @@
-import './images/1.jpg'
+import React from 'react'
+import ReactDOM from 'react-dom'
+//
+import "antd/dist/antd.css";
 
-import component from './component'
-import './main.css'
 
-console.log('hello world')
-console.log('hello world')
-console.log('hello world')
+import App from './App'
 
-console.log('hello world')
-
-document.body.appendChild(component())
+ReactDOM.render(<App />, document.getElementById('root'))

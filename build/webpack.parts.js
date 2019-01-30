@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const PurifyCSSPlugin = require('purifycss-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 const paths = require('./paths')
 
 exports.devServer = ({ host, port } = {}) => ({
@@ -25,7 +26,7 @@ exports.devServer = ({ host, port } = {}) => ({
 
     hot: true // HMR 这个和poll二选一
   },
-  plugins: [
+  plugins:   [
     new webpack.HotModuleReplacementPlugin() // 配合hot:true打开HMR
   ]
 })
@@ -67,7 +68,7 @@ exports.extractCSS = ({ include, exclude, use = [] } = {}) => {
   })
 
   return {
-    module: {
+    module:  {
       rules: [
         {
           test: /\.css$/,
@@ -181,5 +182,37 @@ exports.injectScriptToHtml = ({ isProduction } = {}) => ({
           : undefined
       )
     )
+  ]
+})
+
+exports.optimization = () => ({
+  optimization: {
+    // Automatically split vendor and commons
+    // https://twitter.com/wSokra/status/969633336732905474
+    // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
+    splitChunks: {
+      // include all types of chunks
+      chunks: 'all',
+      name:   false
+    },
+    // Keep the runtime chunk separated to enable long term caching
+    // https://twitter.com/wSokra/status/969679223278505985
+    // runtimeChunk: true
+  }
+})
+
+exports.sourceMap = ({ isProduction, shouldUseSourceMap } = {}) => ({
+  devtool: isProduction
+             ? shouldUseSourceMap
+      ? 'source-map'
+      : false
+             : 'cheap-module-source-map'
+})
+
+exports.gzip = () => ({
+  plugins: [
+    new CompressionPlugin({
+      algorithm: 'gzip'
+    })
   ]
 })

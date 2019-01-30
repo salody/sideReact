@@ -1,5 +1,5 @@
 module.exports = {
-  'API.PLATFORM_HOST':   'https://dplatformapi.coolcollege.cn',
-  'API.ENTERPRISE_HOST': 'https://denterpriseapi.coolcollege.cn',
-  'API.HOST_ISV':        'https://disv.coolcollege.cn'
+  'API.PLATFORM':   'https://dplatformapi.coolcollege.cn',
+  'API.ENTERPRISE': 'https://denterpriseapi.coolcollege.cn',
+  'API.HOST':        'https://disv.coolcollege.cn'
 }
