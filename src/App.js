@@ -1,30 +1,55 @@
-import React, { Component } from 'react'
-import Button from 'antd/lib/button';
-import 'antd/lib/date-picker/style/css';
+import React from 'react'
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          <Button type="primary" loading>
-            Loading
-          </Button>
-        </header>
+const PrimaryLayout = () => (
+  <div>
+    <header>React router 4 App</header>
+    <main>
+      <Switch>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/users" component={UserSubLayout} />
+        <Redirect to="/" />
+      </Switch>
+    </main>
+  </div>
+)
+
+const HomePage = () => <div>Home Page</div>
+
+const UserSubLayout = ({ match }) => {
+  console.log('url', match.url)
+  console.log('path', match.path)
+  return (
+    <div className="user-sub-layout">
+      <aside>
+        <UserNav />
+      </aside>
+      <div className="primary-content">
+        <Switch>
+          <Route path={match.path} exact component={BrowseUsersPage} />
+          <Route path={`${match.path}/:userId`} component={UserProfilePage} />
+        </Switch>
       </div>
-    )
-  }
+    </div>
+  )
 }
+
+const UserNav = () => (
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+)
+
+const BrowseUsersPage = () => <div>BrowseUsersPage</div>
+const UserProfilePage = () => <div>UserProfilePage</div>
+
+const App = () => (
+  <HashRouter>
+    <PrimaryLayout />
+  </HashRouter>
+)
 
 export default App

@@ -14,7 +14,9 @@ module.exports = {
     "no-new": 0,
     "no-tabs": 0,
     "node/no-unpublished-require": 0,
-    "node/no-unsupported-features/es-syntax": 0
+    "node/no-unsupported-features/es-syntax": 0,
+    "react/prop-types": 0,
+    "no-console": 0
   },
   globals: {
     // configure global variables avoid no-undef error
