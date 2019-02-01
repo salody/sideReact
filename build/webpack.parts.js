@@ -61,6 +61,21 @@ exports.loadSCSS = ({ include, exclude } = {}) => ({
   }
 })
 
+exports.loadLESS = ({ include, exclude } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.less$/,
+        include,
+        exclude,
+        use:  ['style-loader', 'css-loader', {
+          loader:  'less-loader', options: { javascriptEnabled: true }
+        }]
+      }
+    ]
+  }
+})
+
 exports.extractCSS = ({ include, exclude, use = [] } = {}) => {
   // Output extracted CSS to a file
   const plugin = new MiniCssExtractPlugin({
@@ -215,4 +230,12 @@ exports.gzip = () => ({
       algorithm: 'gzip'
     })
   ]
+})
+
+exports.defineAlias = () => ({
+  resolve: {
+    alias: {
+      Constants: paths.constantsPath
+    }
+  }
 })

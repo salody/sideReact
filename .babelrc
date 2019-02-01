@@ -5,9 +5,10 @@
   ],
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-transform-runtime",
     ["import", {
       "libraryName": "antd",
-      "style": "css"
+      "style": true
     }]
   ]
 }
